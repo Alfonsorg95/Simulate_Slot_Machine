@@ -35,11 +35,6 @@ public class SlotMachine {
         if(credits > defaultBet){
             credits -= defaultBet;
             String[][] resultsMatrix = spin();
-            /*String[][] resultsMatrix ={
-                {"L1", "A", "W1"},
-                {"L1", "L1", "H1"},
-                {"L1", "A", "H1"}
-            };*/
             printMatrix(resultsMatrix);
             paylines.setResultsMatrix(resultsMatrix);
             int gamePayout = 0;
