@@ -1,0 +1,34 @@
+At the end of the 10000000 rounds, the total amount of credits is: 91675280
+
+71759420 credits were won from the base game and 19915860 credits were won from the bonus game
+
+The total amount of credits spent was: 100000000
+Which means you had a return of 91.675280% 
+71.759420% was returned from the base game 
+19.915860% was returned from the bonus game
+
+The biggest payout was 6400
+
+The symbol W1 won 716000 credits
+Returning 0.716000%
+
+The symbol H1 won 3048000 credits
+Returning 3.048000%
+
+The symbol H2 won 17648800 credits
+Returning 17.648800%
+
+The symbol H3 won 25266720 credits
+Returning 25.266720%
+
+The symbol L1 won 5885400 credits
+Returning 5.885400%
+
+The symbol L2 won 11835840 credits
+Returning 11.835840%
+
+The symbol L3 won 5328080 credits
+Returning 5.328080%
+
+The symbol L4 won 2030580 credits
+Returning 2.030580%

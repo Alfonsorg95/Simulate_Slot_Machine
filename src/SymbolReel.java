@@ -12,12 +12,12 @@ public class SymbolReel {
     }
 
     public List<String> selectSequence(){
-        int reelIndex = random.nextInt(this.symbols.length);
+        int reelIndex = random.nextInt(symbols.length);
         List<String> sequence = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             sequence.add(symbols[reelIndex]);
             reelIndex++;
-            if (reelIndex == this.symbols.length){
+            if (reelIndex == symbols.length){
                 reelIndex = 0;
             }
         }

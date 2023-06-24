@@ -16,12 +16,13 @@ public class Paylines {
 
     public void setResultsMatrix(String[][] resultsMatrix) {
         this.resultsMatrix = resultsMatrix;
-        this.totalPayout = 0;
-        this.setPayLines();
-        //getPayLines();
+        totalPayout = 0;
+        setPayLines();
+        //printPayLines();
     }
 
-    /*public void getPayLines(){
+    /* I used this code to check the paylines were properly assigned
+    public void printPayLines(){
 
         for (int i = 0; i < this.payLines.size(); i++) {
             System.out.println("\nPayline" + i);
@@ -47,25 +48,25 @@ public class Paylines {
 
 
     private String[] getHorizontalPayLine(int row){
-        String[] horizontalPayLine = new String[this.resultsMatrix.length];
-        for (int i = 0; i < this.resultsMatrix.length; i++) {
+        String[] horizontalPayLine = new String[resultsMatrix.length];
+        for (int i = 0; i < resultsMatrix.length; i++) {
             horizontalPayLine[i] = resultsMatrix[i][row];
         }
         return horizontalPayLine;
     }
 
     private String[] getDiagonalPayLine(){
-        String[] diagonalPayLine = new String[this.resultsMatrix.length];
-        for (int i = 0; i < this.resultsMatrix.length; i++) {
+        String[] diagonalPayLine = new String[resultsMatrix.length];
+        for (int i = 0; i < resultsMatrix.length; i++) {
             diagonalPayLine[i] = resultsMatrix[i][i];
         }
         return diagonalPayLine;
     }
 
     private String[] getInverseDiagonalPayLine(){
-        String[] inverseDiagonalPayLine = new String[this.resultsMatrix.length];
-        for (int i = 0; i < this.resultsMatrix.length; i++) {
-            inverseDiagonalPayLine[i] = resultsMatrix[this.resultsMatrix.length - 1 - i][i];
+        String[] inverseDiagonalPayLine = new String[resultsMatrix.length];
+        for (int i = 0; i < resultsMatrix.length; i++) {
+            inverseDiagonalPayLine[i] = resultsMatrix[resultsMatrix.length - 1 - i][i];
         }
         return inverseDiagonalPayLine;
     }

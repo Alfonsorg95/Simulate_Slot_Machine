@@ -10,6 +10,7 @@ public class SlotMachine {
     public static Scanner scanner;
     public int credits;
     public int defaultBet;
+    public int finalAmountSpent;
 
 
     public SlotMachine() {
@@ -27,33 +28,67 @@ public class SlotMachine {
 
     public static void main(String[] args) {
         SlotMachine slotMachine = new SlotMachine();
-        slotMachine.play();
+
+        slotMachine.displayStartScreen();
+    }
+
+    public void displayStartScreen(){
+        int roundsToPlay = 1;
+        do {
+            String wantMoreCredits;
+            do {
+                System.out.println("Each game cost " + defaultBet + " credits");
+                System.out.println("You have " + credits + " credits");
+                System.out.println("Do you want to add more credits?  \"y\": yes  \"n\": no");
+                wantMoreCredits = scanner.nextLine();
+                if (wantMoreCredits.equals("y")){
+                    addCredits();
+                } else if (!wantMoreCredits.equals("n")) {
+                    System.out.println("Please write a valid answer");
+                }
+            }while (!wantMoreCredits.equals("n"));
+
+            System.out.println("How many games you want to play?  \"0\": to exit the game");
+            roundsToPlay = getIntegerInput();
+
+            if (roundsToPlay == 0){
+                break;
+            }
+
+            if (roundsToPlay * defaultBet <= credits){
+                for (int i = 0; i < roundsToPlay; i++) {
+                    play();
+                }
+            }else {
+                System.out.println("Not enough credits, please add more. \nPress enter to continue.");
+                scanner.nextLine();
+            }
+
+        }while (roundsToPlay > 0);
     }
 
     public void play() {
 
-        if(credits > defaultBet){
-            credits -= defaultBet;
-            String[][] resultsMatrix = spin();
-            printMatrix(resultsMatrix);
-            paylines.setResultsMatrix(resultsMatrix);
-            int gamePayout = 0;
-            gamePayout += paylines.getTotalPayout();
-            if (paylines.bonusGameTrigger()) {
-                gamePayout += bonusGame.doBonusRound(defaultBet);
-            }
-
-            if (gamePayout > 0) {
-                System.out.println("You won " + gamePayout + " credits");
-            }
-
-            credits += gamePayout;
-        }else {
-            System.out.println("Not enough credits");
+        credits -= defaultBet;
+        String[][] resultsMatrix = spin();
+        printMatrix(resultsMatrix);
+        paylines.setResultsMatrix(resultsMatrix);
+        int gamePayout = 0;
+        gamePayout += paylines.getTotalPayout();
+        if (paylines.bonusGameTrigger()) {
+            gamePayout += bonusGame.doBonusRound(defaultBet);
         }
 
+        if (gamePayout > 0) {
+            System.out.println("You won " + gamePayout + " credits");
+        }
+        credits += gamePayout;
+
+
+        finalAmountSpent += defaultBet;
         System.out.println("Total credits " + credits);
-        //scanner.nextLine();
+        System.out.println("Press enter to continue");
+        scanner.nextLine();
     }
 
     public String[][] spin() {
@@ -77,6 +112,24 @@ public class SlotMachine {
             }
             System.out.println();
         }
+    }
+
+    public void addCredits(){
+        credits +=100;
+    }
+
+    public int getIntegerInput(){
+        boolean isInteger = false;
+        int integer = 0;
+        while (!isInteger) {
+            try {
+                integer = Integer.parseInt(scanner.nextLine());
+                isInteger = true;
+            } catch (Exception e) {
+                System.out.println("Please enter an integer number");
+            }
+        }
+        return integer;
     }
 
 
