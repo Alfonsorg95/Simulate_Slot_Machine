@@ -33,7 +33,7 @@ public class SlotMachine {
     }
 
     public void displayStartScreen(){
-        int roundsToPlay = 1;
+        int roundsToPlay;
         do {
             String wantMoreCredits;
             do {
